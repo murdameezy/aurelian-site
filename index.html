@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aurelian Fortune Group</title>
+<style>
+body{font-family:sans-serif;max-width:720px;margin:0 auto;padding:2rem;line-height:1.5}
+button{padding:.6rem 1.2rem;border:0;border-radius:6px;background:#d4af37;color:#000;font-weight:600;cursor:pointer}
+pre{background:#111;color:#0f0;padding:1rem;border-radius:6px;overflow-x:auto}
+</style>
+</head>
+<body>
+<h1>🚀 Aurelian Fortune Group</h1>
+<p><em>Golden gains, built for everyone.</em></p>
+
+<h2>Live paper-account P/L</h2>
+<button id="refresh">Refresh</button>
+<pre id="out">Loading…</pre>
+
+<h2>Join the private beta</h2>
+<p><strong>Founders Club — $199 one-time</strong></p>
+<a href="https://buy.stripe.com/REPLACE_WITH_YOUR_LINK" target="_blank">
+  <button>Reserve your seat</button>
+</a>
+
+<footer style="margin-top:2rem;font-size:.8rem;color:#666">
+ Net results shown are from paper trading. Past performance is not necessarily indicative of future results.<br>
+ © 2025 Aurelian Fortune Group
+</footer>
+
+<script>
+const api = "https://www.aurelianfortune.com";          
+async function load(){
+  try{
+    const r=await fetch(api+"/summary");
+    document.getElementById("out").textContent=
+      JSON.stringify(await r.json(),null,2);
+  }catch(e){
+    document.getElementById("out").textContent="Error loading data";
+  }
+}
+document.getElementById("refresh").onclick=load;
+load();
+</script>
+</body>
+</html>
