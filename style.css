@@ -43,3 +43,31 @@ header a{
   text-decoration:none;
 }
 header a:visited{color:var(--primary);}
+/* ==== NAV PILL HIGHLIGHT ==== */
+header a{
+  color: var(--primary);
+  text-decoration: none;
+  padding: .4rem .8rem;
+}
+header a:hover{
+  background:#2b2f3a;
+  border-radius:6px;
+}
+header a.active{           /* only the link with class="active" gets the pill */
+  background:#495065;
+  border-radius:6px;
+  color:#fff;
+}
+
+/* ==== PAGE MARGINS & FOOTER ==== */
+body{                      /* more vertical air */
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+footer.container{         /* center footer the same way as main content */
+  max-width: 760px;
+  margin: 2rem auto 0 auto;
+  font-size:.85rem;
+  text-align:center;
+}
+footer.container a{margin:0 .4rem;}
