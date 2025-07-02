@@ -138,3 +138,17 @@ header a:hover{color:#fff;}
 /* ---------- LIVE SPARKLINE PLACEHOLDER ---------- */
 #spark{display:block;margin:1rem auto;width:160px;height:40px;
        background:linear-gradient(to right,#2563eb66,#2563ebaa);border-radius:4px;}
+/* ---------- FADE-UP ANIMATION ---------- */
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(24px);}
+  to  {opacity:1; transform:translateY(0);}
+}
+/* default hidden state */
+.fade-up{
+  opacity:0;
+  transform:translateY(24px);
+}
+/* animated-in state */
+.fade-up.in{
+  animation:fadeUp .8s ease-out forwards;
+}
