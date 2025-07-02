@@ -83,3 +83,38 @@ header img.logo{
 @media (max-width:640px){
   header img.logo{height:32px}
 }
+/* ---------- GLOBAL TYPE & COLORS ---------- */
+:root{
+  --gold:#d4af37;
+  --navy:#0d1117;
+  --grey:#262b39;
+  --btn:#2563eb;
+}
+body{background:var(--navy) radial-gradient(circle at 50% 0,var(--grey) 0, var(--navy) 65%);}
+main,section{padding:4rem 0;border-bottom:1px solid #1a202c;}
+
+/* ---------- NAV ---------- */
+header img.logo{height:60px;width:auto;vertical-align:middle;margin-right:1rem;}
+header a{color:var(--gold);font-weight:600;text-decoration:none;padding:0 .8rem;line-height:68px;}
+header a:hover{color:#fff;}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:4rem 2rem;background:#1116;border-radius:.75rem;box-shadow:0 4px 12px #0005;text-align:center;}
+.hero::before{content:"";position:absolute;inset:0;background:url('/crest.svg') center/220px no-repeat;opacity:.03;pointer-events:none;}
+
+/* ---------- BUTTONS ---------- */
+.btn{display:inline-block;padding:.85rem 1.8rem;border:0;border-radius:.4rem;
+     font-weight:600;color:#fff;background:var(--btn);cursor:pointer;
+     box-shadow:0 3px 8px #0003;transition:transform .15s;}
+.btn:hover{transform:translateY(-2px);}
+
+/* ---------- TESTIMONIAL CARDS ---------- */
+.testi{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;}
+.testi figure{background:#1119;padding:1.5rem;border-radius:.6rem;max-width:260px;
+              box-shadow:0 3px 8px #0003;font-size:.9rem;color:#ddd;}
+.testi blockquote{margin:0 0 .8rem;font-style:italic;line-height:1.4;}
+.testi figcaption{font-weight:600;color:var(--gold);}
+
+/* ---------- LIVE SPARKLINE PLACEHOLDER ---------- */
+#spark{display:block;margin:1rem auto;width:160px;height:40px;
+       background:linear-gradient(to right,#2563eb66,#2563ebaa);border-radius:4px;}
