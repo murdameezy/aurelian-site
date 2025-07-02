@@ -71,3 +71,9 @@ footer.container{         /* center footer the same way as main content */
   text-align:center;
 }
 footer.container a{margin:0 .4rem;}
+/* ---------- NAV LOGO ---------- */
+header img.logo{
+  height:36px;          /* ← bump this up until it feels right (28 → 36 → 40) */
+  vertical-align:middle;/* keeps text links aligned with the crest */
+  margin-right:.8rem;   /* optional spacing before the “About” link */
+}
