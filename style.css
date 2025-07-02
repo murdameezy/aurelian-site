@@ -71,9 +71,15 @@ footer.container{         /* center footer the same way as main content */
   text-align:center;
 }
 footer.container a{margin:0 .4rem;}
-/* ---------- NAV LOGO ---------- */
+/* ─── NAV BRAND / CREST ─────────────────────────── */
 header img.logo{
-  height:36px;          /* ← bump this up until it feels right (28 → 36 → 40) */
-  vertical-align:middle;/* keeps text links aligned with the crest */
-  margin-right:.8rem;   /* optional spacing before the “About” link */
+  height:48px;        /* ← bump this up until it feels right (40-48-56)  */
+  width:auto;         /* preserves the aspect ratio                     */
+  vertical-align:middle;
+  margin-right:1rem;  /* optional spacing before “About” link           */
+}
+
+/* shrink it slightly on small screens */
+@media (max-width:640px){
+  header img.logo{height:32px}
 }
