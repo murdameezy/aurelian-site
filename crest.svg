@@ -1,48 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg">
-  <!-- Colours -->
+<svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+  <!-- COLOURS -->
   <defs>
     <style>
-      .gold{stroke:#d4af37; fill:none; stroke-width:4; stroke-linecap:round}
-      .fill-gold{fill:#d4af37}
-      .navy{fill:#0d1117}
+      .gold     { stroke:#d4af37; fill:none; stroke-width:4; stroke-linecap:round; stroke-linejoin:round }
+      .fillGold { fill:#d4af37 }
+      .navy     { fill:#0d1117 }
     </style>
   </defs>
 
-  <!-- Background navy -->
-  <rect width="160" height="180" class="navy"/>
+  <!-- BACKGROUND -->
+  <rect width="200" height="220" class="navy"/>
 
-  <!-- Shield -->
-  <path class="gold"
-        d="M20 30 L140 30 L140 90
-           A60 60 0 0 1 80 160
-           A60 60 0 0 1 20 90 Z"/>
+  <!-- OUTER SHIELD (double line) -->
+  <path d="M30 40 L170 40 L170 110
+           L100 190 L30 110 Z" class="gold"/>
+  <path d="M40 52 L160 52 L160 108
+           L100 178 L40 108 Z" class="gold" stroke-width="2"/>
 
-  <!-- Left laurel (6 leaves) -->
-  <g class="gold" transform="translate(30,70)">
-    <path d="M0 0 q 10 -12 20 0"/>
-    <path d="M0 12 q 10 -12 20 0"/>
-    <path d="M0 24 q 10 -12 20 0"/>
-    <path d="M0 36 q 10 -12 20 0"/>
-    <path d="M0 48 q 10 -12 20 0"/>
-    <path d="M0 60 q 10 -12 20 0"/>
+  <!-- LAUREL – left -->
+  <g class="gold" transform="translate(20,80)">
+    <path d="M0 0 q 18 -18 36 0"/>
+    <path d="M0 14 q 18 -18 36 0"/>
+    <path d="M0 28 q 18 -18 36 0"/>
+    <path d="M0 42 q 18 -18 36 0"/>
+    <path d="M0 56 q 18 -18 36 0"/>
+    <path d="M0 70 q 18 -18 36 0"/>
   </g>
 
-  <!-- Right laurel (mirror) -->
-  <g class="gold" transform="translate(130,70) scale(-1,1)">
-    <path d="M0 0 q 10 -12 20 0"/>
-    <path d="M0 12 q 10 -12 20 0"/>
-    <path d="M0 24 q 10 -12 20 0"/>
-    <path d="M0 36 q 10 -12 20 0"/>
-    <path d="M0 48 q 10 -12 20 0"/>
-    <path d="M0 60 q 10 -12 20 0"/>
+  <!-- LAUREL – right (mirror) -->
+  <g class="gold" transform="translate(180,80) scale(-1,1)">
+    <path d="M0 0 q 18 -18 36 0"/>
+    <path d="M0 14 q 18 -18 36 0"/>
+    <path d="M0 28 q 18 -18 36 0"/>
+    <path d="M0 42 q 18 -18 36 0"/>
+    <path d="M0 56 q 18 -18 36 0"/>
+    <path d="M0 70 q 18 -18 36 0"/>
   </g>
 
-  <!-- Gold G -->
-  <text x="80" y="110"
-        text-anchor="middle"
-        font-family="Georgia,serif"
-        font-size="64"
-        font-weight="700"
-        class="fill-gold">G</text>
+  <!-- STAR -->
+  <polygon points="100,62 105,78 122,78 108,88
+                    113,104 100,95 87,104 92,88
+                    78,78 95,78" class="fillGold"/>
+
+  <!-- MONOGRAM -->
+  <text x="100" y="142" text-anchor="middle"
+        font-family="Georgia,serif" font-size="70"
+        font-weight="700" class="fillGold">G</text>
 </svg>
