@@ -1,31 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
-  <!-- background -->
-  <rect width="120" height="140" fill="#0d1117"/>
+<svg viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg">
+  <!-- Colours -->
+  <defs>
+    <style>
+      .gold{stroke:#d4af37; fill:none; stroke-width:4; stroke-linecap:round}
+      .fill-gold{fill:#d4af37}
+      .navy{fill:#0d1117}
+    </style>
+  </defs>
 
-  <!-- shield outline -->
-  <path d="M10 20 L110 20 L110 80
-           A50 50 0 0 1 60 130
-           A50 50 0 0 1 10 80 Z"
-        fill="none" stroke="#d4af37" stroke-width="4"/>
+  <!-- Background navy -->
+  <rect width="160" height="180" class="navy"/>
 
-  <!-- laurel sprigs -->
-  <g stroke="#d4af37" stroke-width="2" fill="none">
-    <path d="M24 60
-             q  8 -8  16  0
-             q -8  8 -16  0
-             q  8 -8  16  0" />
-    <path d="M96 60
-             q -8 -8 -16  0
-             q  8  8  16  0
-             q -8 -8 -16  0" />
+  <!-- Shield -->
+  <path class="gold"
+        d="M20 30 L140 30 L140 90
+           A60 60 0 0 1 80 160
+           A60 60 0 0 1 20 90 Z"/>
+
+  <!-- Left laurel (6 leaves) -->
+  <g class="gold" transform="translate(30,70)">
+    <path d="M0 0 q 10 -12 20 0"/>
+    <path d="M0 12 q 10 -12 20 0"/>
+    <path d="M0 24 q 10 -12 20 0"/>
+    <path d="M0 36 q 10 -12 20 0"/>
+    <path d="M0 48 q 10 -12 20 0"/>
+    <path d="M0 60 q 10 -12 20 0"/>
   </g>
 
-  <!-- G monogram -->
-  <text x="60" y="85"
+  <!-- Right laurel (mirror) -->
+  <g class="gold" transform="translate(130,70) scale(-1,1)">
+    <path d="M0 0 q 10 -12 20 0"/>
+    <path d="M0 12 q 10 -12 20 0"/>
+    <path d="M0 24 q 10 -12 20 0"/>
+    <path d="M0 36 q 10 -12 20 0"/>
+    <path d="M0 48 q 10 -12 20 0"/>
+    <path d="M0 60 q 10 -12 20 0"/>
+  </g>
+
+  <!-- Gold G -->
+  <text x="80" y="110"
         text-anchor="middle"
         font-family="Georgia,serif"
-        font-size="56"
+        font-size="64"
         font-weight="700"
-        fill="#d4af37">G</text>
+        class="fill-gold">G</text>
 </svg>
