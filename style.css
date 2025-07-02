@@ -109,11 +109,31 @@ header a:hover{color:#fff;}
 .btn:hover{transform:translateY(-2px);}
 
 /* ---------- TESTIMONIAL CARDS ---------- */
-.testi{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;}
-.testi figure{background:#1119;padding:1.5rem;border-radius:.6rem;max-width:260px;
-              box-shadow:0 3px 8px #0003;font-size:.9rem;color:#ddd;}
-.testi blockquote{margin:0 0 .8rem;font-style:italic;line-height:1.4;}
-.testi figcaption{font-weight:600;color:var(--gold);}
+.testi{
+  display:flex;
+  gap:2rem;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:3rem;
+}
+.testi figure{
+  background:#1119;        /* translucent black */
+  padding:1.6rem;
+  border-radius:.6rem;
+  max-width:260px;
+  box-shadow:0 3px 8px #0004;
+  font-size:.9rem;
+  color:#ddd;
+}
+.testi blockquote{
+  margin:0 0 .8rem;
+  font-style:italic;
+  line-height:1.4;
+}
+.testi figcaption{
+  font-weight:600;
+  color:#d4af37;           /* gold */
+}
 
 /* ---------- LIVE SPARKLINE PLACEHOLDER ---------- */
 #spark{display:block;margin:1rem auto;width:160px;height:40px;
