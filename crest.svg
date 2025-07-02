@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+  <!-- background -->
+  <rect width="120" height="140" fill="#0d1117"/>
+
+  <!-- shield outline -->
+  <path d="M10 20 L110 20 L110 80
+           A50 50 0 0 1 60 130
+           A50 50 0 0 1 10 80 Z"
+        fill="none" stroke="#d4af37" stroke-width="4"/>
+
+  <!-- laurel sprigs -->
+  <g stroke="#d4af37" stroke-width="2" fill="none">
+    <path d="M24 60
+             q  8 -8  16  0
+             q -8  8 -16  0
+             q  8 -8  16  0" />
+    <path d="M96 60
+             q -8 -8 -16  0
+             q  8  8  16  0
+             q -8 -8 -16  0" />
+  </g>
+
+  <!-- G monogram -->
+  <text x="60" y="85"
+        text-anchor="middle"
+        font-family="Georgia,serif"
+        font-size="56"
+        font-weight="700"
+        fill="#d4af37">G</text>
+</svg>
