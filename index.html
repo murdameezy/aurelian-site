@@ -36,6 +36,20 @@ pre{background:#111;color:#0f0;padding:1rem;border-radius:6px;overflow-x:auto}
 </section>
 <!-- ─────────── Testimonials ─────────── -->
 <section class="testi">
+   <script>
+(function(){
+  const opts={root:null,rootMargin:'0px',threshold:0.4};
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },opts);
+  document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+})();
+</script>
   <figure class="fade-up">
     <blockquote>
       Up <strong>43&nbsp;%</strong> since March — feels effortless.
