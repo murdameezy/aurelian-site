@@ -1,36 +1,91 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<title>Execute trade</title>
-<script src="alpaca.min.js"></script> <!-- from CDN -->
-<script type="module">
-import { saveKey, loadKey } from './storage.js';           // helper
-const params = new URLSearchParams(location.search);
-const sym  = params.get('sym');
-const side = params.get('side');          // buy / sell
-const qty  = Number(params.get('qty')||1);
-const price= Number(params.get('limit')); // optional
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aurelian • Execute trade</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/style.css">
+<style>
+  body{max-width:600px;margin:3rem auto;padding:0 1rem;text-align:center}
+  pre{background:#1119;padding:1rem;border-radius:.5rem;text-align:left;
+      overflow:auto;color:#ddd;font-size:.8rem}
+  form{display:grid;gap:.5rem;max-width:320px;margin:2rem auto}
+  input{padding:.6rem;border-radius:.3rem;border:1px solid #333;background:#1116;color:#eee}
+  .btn{display:inline-block;padding:.7rem 1.4rem;border:0;border-radius:.4rem;
+       background:#2563eb;color:#fff;font-weight:600;cursor:pointer}
+</style>
+</head>
+<body>
 
+<h1>Execute Trade</h1>
+<div id="content">Loading…</div>
+
+<script type="module">
+const qs = new URLSearchParams(location.search);
+const trade = {
+  symbol: qs.get('sym'),
+  side:   qs.get('side'),            // buy / sell
+  qty:    Number(qs.get('qty')||1),
+  limit:  qs.get('limit') ? Number(qs.get('limit')) : null
+};
+
+const BASE = 'https://paper-api.alpaca.markets';          // paper endpoint
+
+// helpers
+const saveKey = k => localStorage.setItem('alpacaKey', JSON.stringify(k));
+const loadKey = () => JSON.parse(localStorage.getItem('alpacaKey')||'null');
+
+// 1. ensure we have keys
+let key = loadKey();
+if(!key){
+  document.getElementById('content').innerHTML = `
+    <p><strong>Paste your Alpaca <em>paper</em> API keys:</strong></p>
+    <form id="keyForm">
+      <input id="id"     placeholder="API Key ID"   required>
+      <input id="secret" placeholder="Secret Key"   required>
+      <button class="btn">Save & Trade</button>
+    </form>
+  `;
+  document.getElementById('keyForm').onsubmit = e=>{
+    e.preventDefault();
+    saveKey({id:id.value.trim(), secret:secret.value.trim()});
+    location.reload();
+  };
+  throw 'Awaiting keys';
+}
+
+// 2. build order payload
+const payload = {
+  symbol: trade.symbol,
+  side:   trade.side,
+  qty:    trade.qty,
+  type:   trade.limit ? 'limit' : 'market',
+  limit_price: trade.limit || undefined,
+  time_in_force: 'day'
+};
+
+// 3. send order
 (async ()=>{
-  let key = await loadKey();              // pulls from IndexedDB
-  if(!key){
-    key = prompt('Paste your Alpaca API key (paper)');     // 1st run
-    await saveKey(key);
-  }
-  const res = await fetch('https://paper-api.alpaca.markets/v2/orders',{
+  const res = await fetch(`${BASE}/v2/orders`,{
     method:'POST',
     headers:{
-      'APCA-API-KEY-ID': key.id,
+      'APCA-API-KEY-ID':     key.id,
       'APCA-API-SECRET-KEY': key.secret,
-      'Content-Type':'application/json'
+      'Content-Type':        'application/json'
     },
-    body: JSON.stringify({
-      symbol:sym, side, qty,
-      type: price? 'limit':'market',
-      limit_price: price||undefined,
-      time_in_force:'day'
-    })
+    body: JSON.stringify(payload)
   });
   const json = await res.json();
-  document.body.innerHTML = `<pre>${JSON.stringify(json,null,2)}</pre>`;
+  document.getElementById('content').innerHTML = `
+    <h2>Order Response</h2>
+    <pre>${JSON.stringify(json,null,2)}</pre>
+    <p><button class="btn" onclick="location.reload()">Trade another</button></p>
+  `;
 })();
 </script>
+
+<p style="margin-top:3rem;font-size:.75rem;color:#888">
+  For educational use only. Alpaca paper accounts are simulated; no funds are at risk.
+</p>
+</body>
+</html>
