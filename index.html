@@ -72,6 +72,12 @@ pre{background:#111;color:#0f0;padding:1rem;border-radius:6px;overflow-x:auto}
     <figcaption>— Luis&nbsp;M.</figcaption>
   </figure>
 </section>
+
+<script>
+  /* simple cascade fade-up on page-load */
+  document.querySelectorAll('.fade-up')
+          .forEach((el,i)=>setTimeout(()=>el.classList.add('in'), i*150));
+</script>
 <!-- ───────────────────────────────────── -->
 <h2>Live paper-account P/L</h2>
 <button id="refresh">Refresh</button>
