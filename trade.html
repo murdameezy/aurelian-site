@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Execute trade</title>
+<script src="alpaca.min.js"></script> <!-- from CDN -->
+<script type="module">
+import { saveKey, loadKey } from './storage.js';           // helper
+const params = new URLSearchParams(location.search);
+const sym  = params.get('sym');
+const side = params.get('side');          // buy / sell
+const qty  = Number(params.get('qty')||1);
+const price= Number(params.get('limit')); // optional
+
+(async ()=>{
+  let key = await loadKey();              // pulls from IndexedDB
+  if(!key){
+    key = prompt('Paste your Alpaca API key (paper)');     // 1st run
+    await saveKey(key);
+  }
+  const res = await fetch('https://paper-api.alpaca.markets/v2/orders',{
+    method:'POST',
+    headers:{
+      'APCA-API-KEY-ID': key.id,
+      'APCA-API-SECRET-KEY': key.secret,
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({
+      symbol:sym, side, qty,
+      type: price? 'limit':'market',
+      limit_price: price||undefined,
+      time_in_force:'day'
+    })
+  });
+  const json = await res.json();
+  document.body.innerHTML = `<pre>${JSON.stringify(json,null,2)}</pre>`;
+})();
+</script>
