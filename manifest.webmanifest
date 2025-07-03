@@ -10,3 +10,4 @@
     { "src": "/crest-512.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
+<link rel="apple-touch-icon" href="/crest-512.png">
