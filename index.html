@@ -15,6 +15,15 @@ body{font-family:sans-serif;max-width:720px;margin:0 auto;padding:2rem;line-heig
 button{padding:.6rem 1.2rem;border:0;border-radius:6px;background:#d4af37;color:#000;font-weight:600;cursor:pointer}
 pre{background:#111;color:#0f0;padding:1rem;border-radius:6px;overflow-x:auto}
 </style>
+   <!-- PWA manifest -->
+<link rel="manifest" href="/manifest.webmanifest">
+
+<!-- Service-worker registration -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+</script>
 </head>
 <body>
 <header>
