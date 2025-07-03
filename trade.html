@@ -21,6 +21,7 @@
 <div id="content">Loading…</div>
 
 <script type="module">
+import { saveKey, loadKey } from './storage.js';
 const qs = new URLSearchParams(location.search);
 const trade = {
   symbol: qs.get('sym'),
@@ -31,12 +32,8 @@ const trade = {
 
 const BASE = 'https://paper-api.alpaca.markets';          // paper endpoint
 
-// helpers
-const saveKey = k => localStorage.setItem('alpacaKey', JSON.stringify(k));
-const loadKey = () => JSON.parse(localStorage.getItem('alpacaKey')||'null');
-
 // 1. ensure we have keys
-let key = loadKey();
+let key = await loadKey();
 if(!key){
   document.getElementById('content').innerHTML = `
     <p><strong>Paste your Alpaca <em>paper</em> API keys:</strong></p>
